@@ -207,7 +207,6 @@ _"/loop 10m check if the build is passing"_
 
 ## 11. Permissions & Safety
 
-
 Claude is careful about risky actions and will ask before:
 - Deleting files or branches
 - Force pushing
@@ -228,7 +227,6 @@ _"Allow Claude to run npm commands without asking"_
 ---
 
 ## 12. Tips & Power Combos
-
 
 ### Combos that work great together
 - `! git diff` → "What changed and why does it matter?"
