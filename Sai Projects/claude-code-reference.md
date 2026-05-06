@@ -44,7 +44,27 @@
 
 ---
 
-## 3. Slash Commands (Skills)
+## 3. MCP Tools (Connected Services)
+
+Claude Code can connect to external services via MCP (Model Context Protocol):
+
+| Service | What Claude can do |
+|---|---|
+| Gmail | Read, search, send emails |
+| Google Calendar | View/create events |
+| Google Drive | Read and search files |
+| IDE (VS Code) | Run code, get diagnostics |
+| Custom MCP servers | Anything you configure |
+
+### Connecting
+- Configured via `/update-config` or `settings.json`
+- Once connected, just describe the task naturally
+
+**Challenge:** Ask Claude "What MCP tools are available?" to see what's connected.
+
+---
+
+## 4. Slash Commands (Skills)
 
 | Command | What it does |
 |---|---|
@@ -63,30 +83,30 @@
 
 ---
 
-## 4. Prompt Tricks
+## 5. Prompt Tricks
 
 | Trick | Example | What it does |
 |---|---|---|
 | `! command` | `! git status` | Run a shell command and inject output into context |
 | `@filename` | `@src/app.py` | Reference a file directly in your prompt |
-| `#note` | `# always use tabs` | Save a quick note to `CLAUDE.md` memory |
-| `?` prefix | `? what does this file do` | Ask a quick question without triggering a task |
 
 ### Examples
 ```
 ! npm run test          → runs tests and Claude sees the output
 @package.json           → Claude reads the file inline
-# prefer async/await over .then() chains
 ```
+
+> **Note:** There is no special `#` or `?` prefix syntax in Claude Code. To save a preference, just tell Claude directly: _"Remember that I prefer async/await over .then() chains"_ — it will store that in memory. To ask a question, just ask normally.
 
 **Challenge:** Try `! git log --oneline -10` and ask Claude to summarize recent changes.
 
 ---
 
-## 5. Memory System
+## 6. Memory System
 
-Claude has a persistent memory across conversations stored in:
-`C:\Users\<you>\.claude\projects\<project>\memory\`
+Claude has a persistent memory across conversations stored in your project's `.claude/` directory:
+- **Windows:** `C:\Users\<you>\.claude\projects\<project>\memory\`
+- **Mac/Linux:** `~/.claude/projects/<project>/memory/`
 
 ### Memory Types
 | Type | What to store |
@@ -105,7 +125,7 @@ Claude has a persistent memory across conversations stored in:
 
 ---
 
-## 6. What Claude Can Do (Code Tasks)
+## 7. What Claude Can Do (Code Tasks)
 
 | Task | Example prompt |
 |---|---|
@@ -122,7 +142,7 @@ Claude has a persistent memory across conversations stored in:
 
 ---
 
-## 7. Git & GitHub Integration
+## 8. Git & GitHub Integration
 
 | Task | Example prompt |
 |---|---|
@@ -140,7 +160,7 @@ Claude can use `gh` CLI for GitHub operations (issues, PRs, releases).
 
 ---
 
-## 8. Plan Mode
+## 9. Plan Mode
 
 Plan mode makes Claude **think before acting** — great for complex tasks.
 
@@ -159,26 +179,6 @@ Plan mode makes Claude **think before acting** — great for complex tasks.
 - For risky refactors
 
 **Challenge:** Ask Claude to plan (not implement) adding a new feature to one of your projects.
-
----
-
-## 9. MCP Tools (Connected Services)
-
-Claude Code can connect to external services via MCP (Model Context Protocol):
-
-| Service | What Claude can do |
-|---|---|
-| Gmail | Read, search, send emails |
-| Google Calendar | View/create events |
-| Google Drive | Read and search files |
-| IDE (VS Code) | Run code, get diagnostics |
-| Custom MCP servers | Anything you configure |
-
-### Connecting
-- Configured via `/update-config` or `settings.json`
-- Once connected, just describe the task naturally
-
-**Challenge:** Ask Claude "What MCP tools are available?" to see what's connected.
 
 ---
 
